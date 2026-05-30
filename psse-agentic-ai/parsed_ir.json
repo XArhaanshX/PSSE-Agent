@@ -1,0 +1,85 @@
+{
+    "metadata": {
+        "name": "Topology",
+        "description": "Ingested via deterministic Excel adapter",
+        "version": "1.0",
+        "topology_type": "radial"
+    },
+    "buses": [
+        {
+            "id": "BUS101",
+            "from_bus": 101,
+            "name": "",
+            "base_kv": 33.0,
+            "bus_type": "swing",
+            "status": true,
+            "metadata": {}
+        },
+        {
+            "id": "BUS102",
+            "from_bus": 102,
+            "name": "",
+            "base_kv": 33.0,
+            "bus_type": "load",
+            "status": true,
+            "metadata": {}
+        },
+        {
+            "id": "BUS201",
+            "from_bus": 201,
+            "name": "",
+            "base_kv": 11.0,
+            "bus_type": "load",
+            "status": true,
+            "metadata": {}
+        }
+    ],
+    "branches": [
+        {
+            "id": "BR1",
+            "from_bus": 101,
+            "to_bus": 102,
+            "r_pu": 0.01,
+            "x_pu": 0.1,
+            "circuit_id": "1",
+            "status": true,
+            "metadata": {}
+        }
+    ],
+    "transformers": [
+        {
+            "id": "TX1",
+            "from_bus": 102,
+            "to_bus": 201,
+            "r_pu": 0.008,
+            "x_pu": 0.0796,
+            "mva": 13.2,
+            "name": "",
+            "circuit_id": "1",
+            "vector_group": "YNd11",
+            "status": true,
+            "metadata": {}
+        }
+    ],
+    "loads": [
+        {
+            "id": "LD1",
+            "from_bus": 201,
+            "p_mw": 2.0,
+            "q_mvar": 0.5,
+            "status": true,
+            "metadata": {}
+        }
+    ],
+    "generators": [
+        {
+            "id": "GEN1",
+            "from_bus": 101,
+            "p_mw": 0.0,
+            "mva": 50.0,
+            "name": "",
+            "status": true,
+            "metadata": {}
+        }
+    ]
+}

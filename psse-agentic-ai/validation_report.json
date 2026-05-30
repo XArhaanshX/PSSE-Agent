@@ -1,0 +1,35 @@
+{
+    "status": "failed",
+    "errors": [
+        {
+            "component_type": "bus",
+            "component_id": "BUS101",
+            "field": "base_kv",
+            "reason": "Invalid value (must be >= 0): -33.0"
+        },
+        {
+            "component_type": "transformer",
+            "component_id": "TX1",
+            "field": "from_bus",
+            "reason": "Missing required field"
+        },
+        {
+            "component_type": "branch",
+            "component_id": "BR1",
+            "field": "from_bus",
+            "reason": "Unknown bus reference (999.0)"
+        },
+        {
+            "component_type": "branch",
+            "component_id": "BR1",
+            "field": "to_bus",
+            "reason": "Unknown bus reference (102.0)"
+        },
+        {
+            "component_type": "transformer",
+            "component_id": "TX1",
+            "field": "to_bus",
+            "reason": "Unknown bus reference (201.0)"
+        }
+    ]
+}

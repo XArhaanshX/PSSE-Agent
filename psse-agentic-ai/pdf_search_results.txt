@@ -1,0 +1,777 @@
+==================================================
+KEYWORD: slider (96 matches)
+==================================================
+--- PAGE 1371 ---
+Fault Analysis
+ ASCC_SCFILE
+4.1.8. ASCC_SCFILE
+This API reads ASCC short circuit results from SCFILE and produces same ASCC output report that was gen-
+erated when SCFILE was created. SCFILE is read into PSSE memory to enable displaying ASCC results onto
+slider diagrams. For this API to work properly, it is required that working case in PSSE memory should be
+the same Saved case that was used when creating the SCFILE.
+This API routine was first introduced in release 32.0.2.
+Batch command syntax:
+BAT_ASCC_SCFILE  SCFILE
+Python command syntax:
+
+--- PAGE 2209 ---
+Chapter 10
+Diagram View
+This chapter defines API routines that are used to manipulate Slider Diagrams in the interface. They will elicit
+no action if a GUI is not present when invoked.
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+2139
+
+--- PAGE 2210 ---
+Diagram View
+ CHANGEDIAGCONTOUR
+10.1. CHANGEDIAGCONTOUR
+Use this API to change the contour parameters for the contour in the active Slider diagram in the GUI. Re-
+quires a current network case.
+This API routine was first introduced in release 31.0.0.
+Batch command syntax:
+BAT_CHANGEDIAGCONTOUR  ELEMENT QUANTITY METHOD COLOR ENABLE RES INFLUENCE
+ BOUND MAX MIN
+
+--- PAGE 2212 ---
+Diagram View
+ CHECKDIAGFILE
+10.2. CHECKDIAGFILE
+Use this API to check the active Slider Diagram in the GUI against the current network case.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_CHECKDIAGFILE
+Python command syntax:
+checkdiagfile()
+
+--- PAGE 2213 ---
+Diagram View
+ CLOSEDIAGFILE
+10.3. CLOSEDIAGFILE
+Use this API to close the active Slider Diagram in the GUI without prompting to save the Diagram.
+This API routine was first introduced in release 30.2.0.
+Batch command syntax:
+BAT_CLOSEDIAGFILE
+Python command syntax:
+closediagfile()
+
+--- PAGE 2214 ---
+Diagram View
+ DELETEDIAGCONTOUR
+10.4. DELETEDIAGCONTOUR
+Use this API to delete the contour from the active Slider Diagram in the GUI.
+This API routine was first introduced in release 31.0.0.
+Batch command syntax:
+BAT_DELETEDIAGCONTOUR
+Python command syntax:
+deletediagcontour()
+
+--- PAGE 2215 ---
+Diagram View
+ ENABLEDIAGCONTOUR
+10.5. ENABLEDIAGCONTOUR
+Use this API to specify the contour parameters and display a contour in the active Slider Diagram in the
+GUI. Requires a current network case.
+This API routine was first introduced in release 31.0.0.
+Batch command syntax:
+BAT_ENABLEDIAGCONTOUR  ELEMENT QUANTITY METHOD COLOR ENABLE RES INFLUENCE
+ BOUND MAX MIN
+
+--- PAGE 2217 ---
+Diagram View
+ EXPORTBUSLOCFILE
+10.6. EXPORTBUSLOCFILE
+This API routine is obsolete. It has been replaced by the API routine  exportbuslocfile_2  .
+Use this API to export the bus location from the active Slider Diagram in the GUI to a file.
+This API routine was first introduced in release 30.2.0.
+Batch command syntax:
+BAT_EXPORTBUSLOCFILE  BUSLOCFILE
+Python command syntax:
+exportbuslocfile(buslocfile)
+
+--- PAGE 2218 ---
+Diagram View
+ EXPORTBUSLOCFILE_2
+10.7. EXPORTBUSLOCFILE_2
+Use this API to export the bus location from the active Slider Diagram in the GUI to a file.
+This API routine was first introduced in release 34.8.0 and 35.1.0.
+Batch command syntax:
+BAT_EXPORTBUSLOCFILE_2  BUSLOCFILE EXPORTGEO
+Python command syntax:
+exportbuslocfile_2(buslocfile, exportgeo)
+
+--- PAGE 2219 ---
+Diagram View
+ EXPORTIMAGEFILE
+10.8. EXPORTIMAGEFILE
+This API routine is obsolete. It has been replaced by the API routine  exportimagefile_2  .
+Use this API to export an image of the active Slider Diagram in the GUI to a file.
+This API routine was first introduced in release 31.0.0.
+Batch command syntax:
+BAT_EXPORTIMAGEFILE  TYPE IMAGEFILE QUALITY
+Python command syntax:
+exportimagefile(type, imagefile, quality)
+
+--- PAGE 2220 ---
+Diagram View
+ EXPORTIMAGEFILE_2
+10.9. EXPORTIMAGEFILE_2
+Use this API to export an image of the active Slider Diagram in the GUI to a file.
+This API routine was first introduced in release 35.3.0.
+Batch command syntax:
+BAT_EXPORTIMAGEFILE_2  TYPE IMAGEFILE QUALITY WIDTH HEIGHT SCALE X Y
+Python command syntax:
+exportimagefile_2(type, imagefile, quality, width, height, scale, x, y)
+
+--- PAGE 2221 ---
+Diagram View
+ GEXMBUS
+10.10. GEXMBUS
+Use this API to create a GEXM/GOUT display of a bus in an active Slider diagram in the GUI. Requires a cur-
+rent network case.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_GEXMBUS  BUS
+Python command syntax:
+
+--- PAGE 2222 ---
+Diagram View
+ GROWBUS
+10.11. GROWBUS
+Use this API to GROW a bus in an active Slider diagram in the GUI. Requires a current network case.
+This API routine was first introduced in release 30.1.0.
+Batch command syntax:
+BAT_GROWBUS  BUSNUMBER XPOSITION YPOSITION
+Python command syntax:
+growbus(busnumber, xposition, yposition)
+
+--- PAGE 2222 ---
+growbus(busnumber, xposition, yposition)
+Fortran command syntax:
+CALL GROWBUS(BUSNUMBER, XPOSITION, YPOSITION)
+Where:
+Integer BUSNUMBER bus number of the bus to GROW (no default) (input).
+Real XPOSITION X coordinate of the bus on the Slider diagram (input).
+Real YPOSITION Y coordinate of the bus on the Slider diagram (input).
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+2152
+
+--- PAGE 2222 ---
+Fortran command syntax:
+CALL GROWBUS(BUSNUMBER, XPOSITION, YPOSITION)
+Where:
+Integer BUSNUMBER bus number of the bus to GROW (no default) (input).
+Real XPOSITION X coordinate of the bus on the Slider diagram (input).
+Real YPOSITION Y coordinate of the bus on the Slider diagram (input).
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+2152
+
+... and 81 more matches for slider.
+==================================================
+KEYWORD: zoom (35 matches)
+==================================================
+--- PAGE 2249 ---
+Integer GRDPTRN grid pattern (input).
+Real FLTVAL (2) array of 2 elements specifying (input).
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+
+--- PAGE 2249 ---
+Real FLTVAL (2) array of 2 elements specifying (input).
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+
+--- PAGE 2249 ---
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+
+--- PAGE 2249 ---
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+
+--- PAGE 2249 ---
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+DBLVAL(9) grid spacing
+
+--- PAGE 2249 ---
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+DBLVAL(9) grid spacing
+DBLVAL(10) grid snap distance
+
+--- PAGE 2249 ---
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+DBLVAL(9) grid spacing
+DBLVAL(10) grid snap distance
+Integer LOGVAL (6) array of 6 elements specifying Each element has only two possible
+
+--- PAGE 2252 ---
+Integer GRDPTRN grid pattern (input).
+Real FLTVAL (2) array of 2 elements specifying (input).
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+
+--- PAGE 2252 ---
+Real FLTVAL (2) array of 2 elements specifying (input).
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+
+--- PAGE 2252 ---
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+
+--- PAGE 2252 ---
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+
+--- PAGE 2252 ---
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+DBLVAL(9) grid spacing
+
+--- PAGE 2252 ---
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+DBLVAL(9) grid spacing
+DBLVAL(10) grid snap distance
+
+--- PAGE 2252 ---
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+DBLVAL(6) zoom at which to hide grid
+DBLVAL(7) multi-page print scaling
+DBLVAL(8) pan distance
+DBLVAL(9) grid spacing
+DBLVAL(10) grid snap distance
+Integer LOGVAL (6) array of 6 elements specifying Each element has only two possible
+
+--- PAGE 2255 ---
+Integer GRDPTRN grid pattern (input).
+Real FLTVAL (2) array of 2 elements specifying (input).
+FLTVAL(1) grid point size
+FLTVAL(2) default line width in pixels
+Real DBLVAL (10) array of 10 elements specifying (input).
+DBLVAL(1) maximum zoom factor x 100, i.e. 10=1000%
+zoom
+DBLVAL(2) minimum zoom factor
+DBLVAL(3) zoom increment
+DBLVAL(4) zoom at which to hide selection handles
+DBLVAL(5) zoom at which to hide text
+
+... and 20 more matches for zoom.
+==================================================
+KEYWORD: growdiagram (16 matches)
+==================================================
+--- PAGE 30 ---
+EXPORTIMAGEFILE  ............................................................................................................... 2149
+EXPORTIMAGEFILE_2  ........................................................................................................... 2150
+GEXMBUS  ........................................................................................................................... 2151
+GROWBUS  .......................................................................................................................... 2152
+GROWBUSLEVELS  ................................................................................................................ 2153
+GROWDIAGRAM  .................................................................................................................. 2154
+GROWDIAGRAM_2  ............................................................................................................... 2155
+GROWSTATION  .................................................................................................................... 2157
+GRPG  ................................................................................................................................. 2158
+IMPORTDRAWFILE  ............................................................................................................... 2159
+IMPORTIMAGEFILE  ............................................................................................................... 2160
+
+--- PAGE 30 ---
+EXPORTIMAGEFILE_2  ........................................................................................................... 2150
+GEXMBUS  ........................................................................................................................... 2151
+GROWBUS  .......................................................................................................................... 2152
+GROWBUSLEVELS  ................................................................................................................ 2153
+GROWDIAGRAM  .................................................................................................................. 2154
+GROWDIAGRAM_2  ............................................................................................................... 2155
+GROWSTATION  .................................................................................................................... 2157
+GRPG  ................................................................................................................................. 2158
+IMPORTDRAWFILE  ............................................................................................................... 2159
+IMPORTIMAGEFILE  ............................................................................................................... 2160
+NEWDIAGFILE  ..................................................................................................................... 2161
+
+--- PAGE 2224 ---
+Diagram View
+ GROWDIAGRAM
+10.13. GROWDIAGRAM
+This API routine is obsolete. It has been replaced by the API routine  growdiagram_2  .
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 33.0.0.
+
+--- PAGE 2224 ---
+Diagram View
+ GROWDIAGRAM
+10.13. GROWDIAGRAM
+This API routine is obsolete. It has been replaced by the API routine  growdiagram_2  .
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 33.0.0.
+Batch command syntax:
+
+--- PAGE 2224 ---
+Diagram View
+ GROWDIAGRAM
+10.13. GROWDIAGRAM
+This API routine is obsolete. It has been replaced by the API routine  growdiagram_2  .
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 33.0.0.
+Batch command syntax:
+BAT_GROWDIAGRAM  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+
+--- PAGE 2224 ---
+This API routine is obsolete. It has been replaced by the API routine  growdiagram_2  .
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 33.0.0.
+Batch command syntax:
+BAT_GROWDIAGRAM  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+Python command syntax:
+growdiagram(numlevels, itemcount, itemlist, xposition, yposition)
+Fortran command syntax:
+CALL GROWDIAGRAM(NUMLEVELS, ITEMCOUNT, ITEMLIST, XPOSITION, YPOSITION)
+Where:
+
+--- PAGE 2224 ---
+current network case.
+This API routine was first introduced in release 33.0.0.
+Batch command syntax:
+BAT_GROWDIAGRAM  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+Python command syntax:
+growdiagram(numlevels, itemcount, itemlist, xposition, yposition)
+Fortran command syntax:
+CALL GROWDIAGRAM(NUMLEVELS, ITEMCOUNT, ITEMLIST, XPOSITION, YPOSITION)
+Where:
+Integer NUMLEVELS number of levels; include all buses up to this number of connections
+from each item in ITEMLIST in the GROW operation. A value of -1 can
+
+--- PAGE 2224 ---
+Batch command syntax:
+BAT_GROWDIAGRAM  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+Python command syntax:
+growdiagram(numlevels, itemcount, itemlist, xposition, yposition)
+Fortran command syntax:
+CALL GROWDIAGRAM(NUMLEVELS, ITEMCOUNT, ITEMLIST, XPOSITION, YPOSITION)
+Where:
+Integer NUMLEVELS number of levels; include all buses up to this number of connections
+from each item in ITEMLIST in the GROW operation. A value of -1 can
+be used to grow all buses (subsystem and in-service options still ap-
+ply), however attempting to lay out several hundred buses or more
+
+--- PAGE 2225 ---
+Diagram View
+ GROWDIAGRAM_2
+10.14. GROWDIAGRAM_2
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 34.3.0.
+Batch command syntax:
+
+--- PAGE 2225 ---
+Diagram View
+ GROWDIAGRAM_2
+10.14. GROWDIAGRAM_2
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 34.3.0.
+Batch command syntax:
+BAT_GROWDIAGRAM_2  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+
+--- PAGE 2225 ---
+10.14. GROWDIAGRAM_2
+Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a
+current network case.
+This API routine was first introduced in release 34.3.0.
+Batch command syntax:
+BAT_GROWDIAGRAM_2  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+ EXCLUDELIST
+Python command syntax:
+growdiagram_2(numlevels, itemcount, itemlist, xposition, yposition,
+ excludelist)
+Fortran command syntax:
+
+--- PAGE 2225 ---
+This API routine was first introduced in release 34.3.0.
+Batch command syntax:
+BAT_GROWDIAGRAM_2  NUMLEVELS ITEMCOUNT ITEMLIST XPOSITION YPOSITION
+ EXCLUDELIST
+Python command syntax:
+growdiagram_2(numlevels, itemcount, itemlist, xposition, yposition,
+ excludelist)
+Fortran command syntax:
+CALL GROWDIAGRAM_2(NUMLEVELS, ITEMCOUNT, ITEMLIST, XPOSITION, YPOSITION,
+ EXCLUDELIST)
+Where:
+
+--- PAGE 2225 ---
+ EXCLUDELIST
+Python command syntax:
+growdiagram_2(numlevels, itemcount, itemlist, xposition, yposition,
+ excludelist)
+Fortran command syntax:
+CALL GROWDIAGRAM_2(NUMLEVELS, ITEMCOUNT, ITEMLIST, XPOSITION, YPOSITION,
+ EXCLUDELIST)
+Where:
+Integer NUMLEVELS number of levels; include all buses up to this number of connections
+from each item in ITEMLIST in the GROW operation. A value of -1 can
+be used to grow all buses (subsystem and in-service options still ap-
+
+--- PAGE 2226 ---
+Diagram View
+ GROWDIAGRAM_2
+EXCLUDELIST(4) Exclude switched shunts (0 by default)
+EXCLUDELIST(4) = 0 disabled
+EXCLUDELIST(4) = 1 enabled
+EXCLUDELIST(5) Exclude induction machines (0 by default)
+EXCLUDELIST(5) = 0 disabled
+
+--- PAGE 4561 ---
+GNEINT, 2403
+GNESTATUS, 202
+GNET, 203
+GROWBUS, 2152
+GROWBUSLEVELS, 2153
+GROWDIAGRAM, 2154
+GROWDIAGRAM_2, 2155
+GROWSTATION, 2157
+GRPG, 2158
+GRUN, 1669
+GSTR, 1670
+
+... and 1 more matches for growdiagram.
+==================================================
+KEYWORD: savediagfile (7 matches)
+==================================================
+--- PAGE 30 ---
+PRINTDIAGFILE  .................................................................................................................... 2168
+PRINTDIAGFILE_2  ................................................................................................................ 2169
+REFRESHDIAGCONTOUR  ....................................................................................................... 2170
+REFRESHDIAGFILE  ................................................................................................................ 2171
+RENUMDIAGFILE  ................................................................................................................. 2172
+SAVEDIAGFILE  ..................................................................................................................... 2173
+SETDIAGAUTOFILE  ............................................................................................................... 2174
+SETDIAGFONT  ..................................................................................................................... 2175
+SETDIAGPREC  ...................................................................................................................... 2176
+SETDIAGPREC_2  .................................................................................................................. 2177
+SETDIAGPROP  ..................................................................................................................... 2178
+
+--- PAGE 2243 ---
+Diagram View
+ SAVEDIAGFILE
+10.31. SAVEDIAGFILE
+Use this API to save the active Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_SAVEDIAGFILE  SFILE
+
+--- PAGE 2243 ---
+Diagram View
+ SAVEDIAGFILE
+10.31. SAVEDIAGFILE
+Use this API to save the active Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_SAVEDIAGFILE  SFILE
+Python command syntax:
+
+--- PAGE 2243 ---
+ SAVEDIAGFILE
+10.31. SAVEDIAGFILE
+Use this API to save the active Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_SAVEDIAGFILE  SFILE
+Python command syntax:
+savediagfile(sfile)
+Fortran command syntax:
+CALL SAVEDIAGFILE(SFILE)
+Where:
+
+--- PAGE 2243 ---
+Use this API to save the active Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_SAVEDIAGFILE  SFILE
+Python command syntax:
+savediagfile(sfile)
+Fortran command syntax:
+CALL SAVEDIAGFILE(SFILE)
+Where:
+Character*260 SFILE name of file to save the Slider diagram in (input).
+PSS®E 36.0.0
+
+--- PAGE 2243 ---
+Batch command syntax:
+BAT_SAVEDIAGFILE  SFILE
+Python command syntax:
+savediagfile(sfile)
+Fortran command syntax:
+CALL SAVEDIAGFILE(SFILE)
+Where:
+Character*260 SFILE name of file to save the Slider diagram in (input).
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+2173
+
+--- PAGE 4567 ---
+RWSQ_2, 568
+RXPATH, 3317
+S
+SAVE, 570
+SAVEACCONTFILE, 3747
+SAVEDIAGFILE, 2173
+SAVEEVENTSTUDYFILE, 3287
+SAVEFLOWGATES, 3748
+SAVESCENARIOFILE, 3207
+SAVESELECTEDCONTS, 3749
+SAVESUBSYSTEMS, 3750
+
+==================================================
+KEYWORD: newdiagfile (7 matches)
+==================================================
+--- PAGE 30 ---
+GROWDIAGRAM_2  ............................................................................................................... 2155
+GROWSTATION  .................................................................................................................... 2157
+GRPG  ................................................................................................................................. 2158
+IMPORTDRAWFILE  ............................................................................................................... 2159
+IMPORTIMAGEFILE  ............................................................................................................... 2160
+NEWDIAGFILE  ..................................................................................................................... 2161
+NEXTDIAGFILEDATASET  ........................................................................................................ 2162
+OPENACCFILE  ...................................................................................................................... 2163
+OPENACCFILE_2  .................................................................................................................. 2164
+OPENBUSLOCFILE  ................................................................................................................ 2165
+OPENDIAGFILE  .................................................................................................................... 2166
+
+--- PAGE 2231 ---
+Diagram View
+ NEWDIAGFILE
+10.19. NEWDIAGFILE
+Use this API to open a new Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_NEWDIAGFILE
+
+--- PAGE 2231 ---
+Diagram View
+ NEWDIAGFILE
+10.19. NEWDIAGFILE
+Use this API to open a new Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_NEWDIAGFILE
+Python command syntax:
+
+--- PAGE 2231 ---
+ NEWDIAGFILE
+10.19. NEWDIAGFILE
+Use this API to open a new Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_NEWDIAGFILE
+Python command syntax:
+newdiagfile()
+Fortran command syntax:
+CALL NEWDIAGFILE
+PSS®E 36.0.0
+
+--- PAGE 2231 ---
+Use this API to open a new Slider diagram in the GUI.
+This API routine was first introduced in release 30.0.0.
+Batch command syntax:
+BAT_NEWDIAGFILE
+Python command syntax:
+newdiagfile()
+Fortran command syntax:
+CALL NEWDIAGFILE
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+2161
+
+--- PAGE 2231 ---
+Batch command syntax:
+BAT_NEWDIAGFILE
+Python command syntax:
+newdiagfile()
+Fortran command syntax:
+CALL NEWDIAGFILE
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+2161
+
+--- PAGE 4564 ---
+NATONO, 2469
+NETG, 400
+NEW_DIMENSION, 404
+NEWCAS, 401
+NEWCASE_2, 402
+NEWDIAGFILE, 2161
+NEWOPF, 1166
+NEWPLOTBOOK, 3477
+NEWSCENARIOFILE, 3205
+NEWSEQ, 1323
+NEWTON_TOLERANCE, 403
+
+==================================================
+KEYWORD: graphics (2 matches)
+==================================================
+--- PAGE 3499 ---
+Chapter 20
+Non-Engineering
+This chapter defines API routines that provide functions not associated with PSS®E data, analysis, or graphics
+capabilities.
+Most of these routines do not record themselves when called with recording enabled. Those that have a
+batch format documented can record themselves.
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+
+--- PAGE 3543 ---
+exportplot(sfilename, ntype)
+Fortran command syntax:
+CALL EXPORTPLOT(SFILENAME, NTYPE)
+Where:
+Character*260 SFILENAME filename (input).
+Integer NTYPE graphics format for the exported file (input).
+NTYPE = 1 Metafile export
+NTYPE = 2 Bitmap export
+NTYPE = 3 JPEG export
+NTYPE = 4 PDF export
+PSS®E 36.0.0
+
+==================================================
+KEYWORD: map string (2 matches)
+==================================================
+--- PAGE 2224 ---
+user only grow several levels at once (input).
+Integer ITEMCOUNT number of items in ITEMLIST. ITEMCOUNT can be 0 if NUMLEVELS is
+-1. Under this condition diagram growth will start at an arbitrary bus
+(input; 0 by default).
+Character*40 ITEMLIST (ITEM-
+COUNT)list of items to grow. Each item is given by its generated map string
+(input).
+Real XPOSITION X coordinate of the first bus on the Slider diagram (input).
+Real YPOSITION X coordinate of the first bus on the Slider diagram (input).
+PSS®E 36.0.0
+All material contained in this documentation is proprietary to Siemens Industry Inc., Siemens Power Technologies International
+
+--- PAGE 2225 ---
+user only grow several levels at once (input).
+Integer ITEMCOUNT number of items in ITEMLIST. ITEMCOUNT can be 0 if NUMLEVELS is
+-1. Under this condition diagram growth will start at an arbitrary bus
+(input; 0 by default).
+Character*40 ITEMLIST (ITEM-
+COUNT)list of items to grow. Each item is given by its generated map string
+(input).
+Real XPOSITION X coordinate of the first bus on the Slider diagram (input).
+Real YPOSITION X coordinate of the first bus on the Slider diagram (input).
+integer EXCLUDELIST (13) array of 13 elements specifying list of element types to exclude from
+the grow operation(input).
+

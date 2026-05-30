@@ -1,0 +1,4 @@
+networkx
+pydantic
+python-dotenv
+rich

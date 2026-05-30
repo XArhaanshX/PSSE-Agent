@@ -1,0 +1,180 @@
+Topology occurrences:
+Architecture: Topology-first, IR-driven, orchestrator + specialist agents.
+2. Constructs an internal topology graph representing the electrical network5/22/26, 9:09 PM PSSE36 Agentic AI System - PRD
+file:///C:/Users/arhaa/OneDrive/poc1/PRD_PSSE36_AGENTIC_AI.html 1/1593. Validates the topology against electrical engineering rules
+topology → model → SLD
+AutomatedSystem partially interprets uploaded drawings/PDFs, proposes topology,
+Pain 3: Manual Topology Creation
+PSSE's bus-branch model requires deep understanding of both the electrical topology and PSSE's modelling
+Substation topology knowledge is concentrated in senior engineers. How to model a breaker-and-a-half
+when modelling the identical topology for Project B.
+mechanical once the topology is defined.
+Pain 12: Topology Debugging
+Debugging requires manually tracing bus connections through data tables. There is no visual topology
+merely ugly — it is functionally impaired because it obscures the topology it is meant to communicate.
+This language is semi-structured. Voltage levels, equipment count s, topology types, and arrangement patterns
+deterministic topology specifications from this language with high reliability because the domain vocabulary is
+Topology errors per model 2–8 0–1 (validated) ~90% reduction
+├── Generates topology from prompt
+├── Validates topology against engineering rules
+├── Suggests topology from partial specifications
+03Topology generation System constructs an electrical topology graph from parsed intent
+14IR generation System produces a JSON intermediate representation of the topology
+15Validation System checks topology graph for basic electrical consistency before
+16CT/PT representation Model current and potential transformers in the topology
+18Bus coupler Support bus coupler topology in double-bus arrangements
+Current Pain Points: - Needs many small test networks quickly - Cares about topology correctness, not
+research velocity - Often needs parametric variations of the same base topology
+topology_type: Enumerated type (radial, ring, double_bus, single_bus, breaker_and_half, mesh)
+FR-04: Topology Graph Construction
+Description: System shall construct an internal graph G(V, E) representing the electrical topology.
+FR-05: Topology Validation
+Description: System shall validate the constructed topology against electrical engineering rules before
+Description: System shall compute (x, y) coordinates for every component in the topology for SLD
+Topology IR (.json)
+Topology graph summary (node count , edge count , voltage levels)
+Topology construction < 5 seconds for ≤ 50 buses < 2 seconds for ≤ 200 buses
+identical topology and PSSE model (deterministic output).
+│  │ INTENT      │ │ TOPOLOGY  │ │ CONSTRAINT│                        │
+Purpose: Canonical data structure representing the electrical topology, independent of both the natural
+Topology-first Always construct a graph abstraction
+│         │ Topology      │──► TopologyGraph (NetworkX + JSON IR)
+Intent Parsing ──► Topology Planning ──► Validation ──► HITL ──► Layout ──► PSSE Execution ──► Verification5/22/26, 9:09 PM PSS
+//C:/Users/arhaa/OneDrive/poc1/PRD_PSSE36_AGENTIC_AI.html 27/159Why this order matters: 1. Intent → Topology: Cannot build graph without understanding what to build 2.
+Topology → Validation: Cannot validate what hasn't been constructed 3. Validation → HITL: Human should
+review validated (not raw) topology 4. HITL → Layout: Don't compute layout for rejected topology 5. Layout →
+topology_type, equipment_list, conne ctivity_hints, assumptions,
+file:///C:/Users/arhaa/OneDrive/poc1/PRD_PSSE36_AGENTIC_AI.html 31/159Agent 3: Topology Planner Agent
+Purpose Construct an electrical topology graph from the StructuredIntent.
+Outputs TopologyGraph (NetworkX DiGraph) + TopologyIR (JSON serialization).
+Logic Pattern-matching on topology_type to select a graph template, then
+Example: topology_type=double_bus, feeders=6 → generate double-bus template with 2
+Failure modes Unsupported topology type, contradictory equipment specification (e.g., bus
+Complexity POC: Medium (implementing 3–4 topology templates correctly). Production:
+Why it must exist The topology graph IS the core abstraction. Without it, the system is just a
+Purpose Validate the constructed topology graph against electrical
+Inputs TopologyGraph (NetworkX DiGraph).
+Failure modes False positive (rejects valid topology), false negative (accepts invalid
+topology), incomplete check coverage.5/22/26, 9:09 PM PSSE36 Agentic AI System - PRD
+Why it must exist Catching topology errors BEFORE PSSE execution saves minutes of
+Purpose Compute (x, y) coordinates and orientations for all components in the topology
+Inputs TopologyGraph (NetworkX DiGraph), layout configuration (spacing constants,
+Inputs TopologyIR (JSON), LayoutMap (coordinates), PSSE session handle.
+Category C: Structural Invalid topology after execution → re-validate, modify IR, retry
+Why not fewer? - Combining Intent Parser + Topology Planner would mix LLM-dependent code with
+Topology Planner. - No separate "Diagram Rendering Agent" — diagram is an output of PSSE Executor. - No
+separate "Template Selection Agent" — template selection is a function within Topology Planner. - No separate
+TopologyPlanner.plan(intent: StructuredIntent) -> TopologyGraph
+ConstraintValidator.validate(graph: TopologyGraph) -> ValidationReport
+LayoutEngine.compute(graph: TopologyGraph, config: LayoutConfig) -> LayoutMap
+PSSEExecutor.execute(ir: TopologyIR, layout: LayoutMap) -> ExecutionReport
+Generate assumptions list. If critical ambiguity exists (topology_type unclear, voltage missing), pause for
+topology_type (substation context)single_bus Simplest arrangement
+Stage 4: PLAN (Topology Construction)
+Output: TopologyGraph (NetworkX) + TopologyIR (JSON)
+Actions: Select topology template based on topology_type. Instantiate template with parameters from
+Failure case: Unsupported topology type → error. Contradictory parameters → error with explanation.
+Logs: {event: "topology_planned", node_count, edge_count, voltage_levels, topology_type,
+Input: TopologyGraph
+Retry: Orchestrator may re-invoke Topology Planner with constraint adjustments
+Input: ResolvedIntent, TopologyGraph summary, ValidationReport, assumptions list
+Actions: Present to user: (a) interpreted intent, (b) assumptions made, (c) topology summary (bus count,
+Input: Approved TopologyGraph, LayoutConfig
+Input: TopologyIR, LayoutMap, PSSE session
+3. Topology keywords: "double bus", "ring bus", "radial", "breaker-and-half", "bus coupler", "bus section"
+class TopologyType(str, Enum):
+topology_type: TopologyType
+4. If topology type is not explicit, infer from keywords:
+"topology_type": "double_bus",
+"confidence_scores": {"voltage_levels_kv": 1.0, "topology_type": 1.0, "equipment_list": 0.9},
+"topology_type": "single_bus",
+"confidence_scores": {"voltage_levels_kv": 0.8, "topology_type": 0.6},
+topology at 33kV"Proceed directly
+topology? equipment?
+topologyConfidence score < 0.5 on
+topology_typeFlag for user confirmation
+# Topology keywords
+hints['topology_type'] = topo_type
+every topology decision must be visible to the engineer before execution.5/22/26, 9:09 PM PSSE36 Agentic AI System
+│  │ • Topology: double_bus (confidence: 1.0)  │   │
+│  │ TOPOLOGY SUMMARY                          │   │
+Topology Planning
+Production:    Configurable per user/topology complexity
+Implementation: Track approval_history per topology template. If a template has been approved 10+ times
+{workflow_id}_topology.json JSON IR serialization Topology record
+1. Contract between agents: Intent Parser produces it, Topology Planner builds it, Validator checks it,
+5. Version history: IR versions track how the topology evolved through modifications.
+"title": "PSSE36 Topology IR",
+"topology_type": {"type": "string", "enum": ["radial","single_bus","double_bus","ring_bus","breaker_and_ha
+"topology_type": "radial",
+"topology_type": "double_bus",
+§16. Graph Topology Engine
+"""Build a double-bus substation topology."""
+§17. Topology Validation System
+def validate_topology(graph: nx.DiGraph, ir: TopologyIR) -> ValidationReport:
+INPUT: TopologyGraph G, LayoutConfig C
+def score_layout(layout: LayoutMap, graph: TopologyGraph) -> float:
+TopologyIR + LayoutMap
+def export_sld_svg(layout: LayoutMap, graph: TopologyGraph, filepath: str):
+Structural S Invalid topology post-execution,
+agent_name: str             # "intent_parser", "topology_planner", etc.
+TOPOLOGY Topology Planner Graph constructed, node/edge count s, template used
+topology_graph: Optional[nx.DiGraph]
+topology_ir: Optional[TopologyIR]
+Topology IR .json Topology
+topology
+│   └── templates/               # Topology templates
+│       ├── topology/
+│       │   ├── topology_ir_v1.json
+│       │   └── topology_ir_v2.json  # If modified
+Given: A topology_ir_v{N}.json file and layout_map.json
+• Topology: double_bus (confidence: 1.0)
+─── TOPOLOGY ──────────────────────────────────────────
+Constructed topology:
+📁 runs/a1b2c3d4/topology/topology_ir_v1.json
+v1.0 Desktop app (PyQt6) Chat panel, topology graph viewer, progress bar
+graph, ir = plan_topology(intent)
+report = validate_topology(graph, ir)
+file:///C:/Users/arhaa/OneDrive/poc1/PRD_PSSE36_AGENTIC_AI.html 114/159Milestone P2: Topology Graph Engine
+Deliverable topology_engine.py module with template builders. ir_schema.json.
+Objective Automatically place topology components on a visual diagram
+Demo Generated SLD image/screenshot showing readable topology layout
+bus" topology. 3. Correctly count s "6 feeders". 4. Confidence scores reflect extraction
+Demo Type prompt → see extracted intent → see generated topology
+3 working topology templates. Error handling. 10+ golden test cases passing.
+Week 2-3:    P2 (topology graph) + P3 (validation)
+file:///C:/Users/arhaa/OneDrive/poc1/PRD_PSSE36_AGENTIC_AI.html 123/159Epic 2: Topology Engine
+Build radial topology
+checksP0 Medium Low Topology
+assignmentP1 Medium Low Topology
+ir = result.topology_ir
+# Topology correctness
+graph = result.topology_graph
+assert result.topology_ir == result2.topology_ir5/22/26, 9:09 PM PSSE36 Agentic AI System - PRD
+"topology_type": "double_bus",
+"topology_type": "radial",
+"Create a {voltage} {topology} substation with {count} {equipment}",
+"{count} bus {topology} network at {voltage}",
+"Generate a {voltage} substation with {topology} arrangement",
+topology=random.choice(FUZZ_VOCABULARY["topologies"]),
+Detection Confidence scores < 0.5 on critical fields (voltage, topology_type)
+file:///C:/Users/arhaa/OneDrive/poc1/PRD_PSSE36_AGENTIC_AI.html 135/159F02: Hallucinated Topology
+Root cause Topology planner creates disconne cted subgraphs
+M1: Topology Correctness (%)
+Formula: topology_correctness = (workflows_with_zero_validation_errors / total_workflows) × 100
+├── 3 topology templates
+├── 6+ topology templates
+├── Topology composition (combine substation + transmission)
+Level 2: Visual topology graph in approval UI. Interactive editing.
+Level 2: Automated topology diagram comparison (generated vs expected)
+Engineer1 (part-time) Domain expertise. Topology template design. Validation rule
+Day 8-9: Topology Engine (P2)
+- Implement radial topology template
+- Implement double-bus topology template
+- Additional topology templates (ring bus, breaker-and-half)
+Goal: End-to-end POC: natural language prompt → PSSE model + diagram artifact for 3 topology types.
+Deliverables: 1. Working CLI: user types prompt, system produces PSSE model 2. Three working topology
+prompt test suite) 4. Topology validation (10 checks) 5. SLD layout with SVG export (PSSE diagram if API
+(≤50 buses), generates a validated topology, creates a PSSE36 model, attempts SLD placement, and
+Three supported topology types: 1. Radial network (parameterized by bus count, voltage) 2. Single-bus
+Architecturally sound (topology-first, IR-driven, observable) - Honestly assessed (diagram API is the highest

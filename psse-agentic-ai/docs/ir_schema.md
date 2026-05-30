@@ -1,0 +1,1 @@
+<!-- IR Schema document placeholder -->\n
